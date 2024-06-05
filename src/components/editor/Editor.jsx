@@ -13,7 +13,7 @@ const Editor = ({ placeholder }) => {
 
     const config = useMemo(() => ({
         readonly: false,
-        placeholder: placeholder || 'Start typings...',
+        placeholder: placeholder || 'Enter Description...',
         height: '400px',
         style: {
             padding: '15px',

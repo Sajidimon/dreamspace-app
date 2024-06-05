@@ -16,6 +16,7 @@ import Checkout from './pages/checkout/Checkout';
 import Shop from './pages/shop/Shop';
 import ProductCategory from './pages/productCategory/ProductCategory';
 import Dashboard from './Dashboard/dashboard/Dashboard';
+import AddProductMenu from './Dashboard/addProductMenu/AddProductMenu';
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,8 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        
+        path: 'addProduct',
+        element: <AddProductMenu/>
       }
     ]
   }

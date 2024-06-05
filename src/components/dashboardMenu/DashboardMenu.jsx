@@ -22,7 +22,7 @@ const DashboardMenu = () => {
                                 <Link to=''> <button>All product</button></Link>
                             </li>
                             <li>
-                                <Link to='/dashboard/addProduct'> <button>Add new product</button></Link>
+                                <Link to='/admin-dashboard/addProduct'> <button>Add new product</button></Link>
                             </li>
                         </ul>
                     </details>
