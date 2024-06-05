@@ -10,6 +10,11 @@ import Error from './pages/error/Error';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import SingleProduct from './pages/singleProduct/SingleProduct';
+import Cart from './pages/cart/Cart';
+import Checkout from './pages/checkout/Checkout';
+import Shop from './pages/shop/Shop';
+import ProductCategory from './pages/productCategory/ProductCategory';
 
 const router = createBrowserRouter([
   {
@@ -23,11 +28,31 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin-login',
-        element: <Login/>
+        element: <Login />
       },
       {
         path: '/admin-register',
-        element: <Register/>
+        element: <Register />
+      },
+      {
+        path: '/shop',
+        element: <Shop />
+      },
+      {
+        path: '/product-category',
+        element: <ProductCategory />
+      },
+      {
+        path: '/single-product',
+        element: <SingleProduct />
+      },
+      {
+        path: '/cart',
+        element: <Cart />
+      },
+      {
+        path: '/checkout',
+        element: <Checkout />
       }
     ]
   },

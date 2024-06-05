@@ -1,10 +1,10 @@
 
 
-const RecentSection = () => {
+const Shop = () => {
     return (
         <>
             <div className="my-14 mx-5">
-                <h2 className="text-center text-2xl text-black font-bold mb-10">Recent Arrival</h2>
+                <h2 className="text-center text-2xl text-black font-bold mb-10">Shop</h2>
                 <div className="md:grid md:grid-cols-4 gap-4">
                     <div className="rounded-lg mb-10">
                         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
@@ -71,12 +71,9 @@ const RecentSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="text-center my-10">
-                    <button className="btn btn-primary">Load Product</button>
-                </div>
-            </div>
+            </div> 
         </>
     );
 };
 
-export default RecentSection;
+export default Shop;
