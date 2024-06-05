@@ -8,6 +8,8 @@ import './index.css'
 import Main from './layouts/Main/Main';
 import Error from './pages/error/Error';
 import Home from './pages/home/Home';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +19,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
+      },
+      {
+        path: '/admin-login',
+        element: <Login/>
+      },
+      {
+        path: '/admin-register',
+        element: <Register/>
       }
     ]
   },

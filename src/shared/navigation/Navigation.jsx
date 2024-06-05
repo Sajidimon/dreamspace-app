@@ -1,5 +1,7 @@
 
 import { FaCartPlus } from "react-icons/fa";
+import { BiLogIn } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 
 
@@ -12,6 +14,7 @@ const Navigation = () => {
             <li><a>Flower & base</a></li>
             <li><a>wall clocks</a></li>
             <li><a>Fmetal decor</a></li>
+            <li><a>single product</a></li>
         
         </>
    
@@ -36,6 +39,7 @@ const Navigation = () => {
                 </div>
                 <div className="navbar-end">
                     <a className="btn bg-[#515151] border-none text-white"><FaCartPlus/>cart</a>
+                    <Link to='/admin-login'><a className="btn bg-[#515151] border-none text-white"><BiLogIn />Login</a></Link>
                 </div>
             </div>
         </div>
