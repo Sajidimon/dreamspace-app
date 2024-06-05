@@ -10,7 +10,7 @@ const PostForm = () => {
                     <div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-black text-xl">Add New Post</span>
+                                <span className="label-text text-black text-xl">Add New Product</span>
                             </label>
                             <input type="text" placeholder='Enter title' className="input input-bordered bg-white text-black" required />
                         </div>

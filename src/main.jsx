@@ -17,6 +17,7 @@ import Shop from './pages/shop/Shop';
 import ProductCategory from './pages/productCategory/ProductCategory';
 import Dashboard from './Dashboard/dashboard/Dashboard';
 import AddProductMenu from './Dashboard/addProductMenu/AddProductMenu';
+import AllProductMenu from './Dashboard/allProductMenu/AllProductMenu';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: 'addProduct',
         element: <AddProductMenu/>
+      },
+      {
+        path: 'allProduct',
+        element: <AllProductMenu/>
       }
     ]
   }

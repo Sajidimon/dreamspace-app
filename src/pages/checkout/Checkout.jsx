@@ -71,7 +71,7 @@ const Checkout = () => {
                                 </div>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-warning">Order Now</button>
+                                <button className="btn btn-warning">Place Order</button>
                             </div>
                         </form>
                     </div>
