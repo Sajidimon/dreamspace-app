@@ -5,7 +5,7 @@ import Editor from "../editor/Editor";
 const PostForm = () => {
     return (
         <>
-            <div className='grid grid-cols-4 gap-3'>
+            <div className='md:grid md:grid-cols-4 gap-3'>
                 <div className='col-span-3'>
                     <div>
                         <div className="form-control">
