@@ -18,6 +18,8 @@ import ProductCategory from './pages/productCategory/ProductCategory';
 import Dashboard from './Dashboard/dashboard/Dashboard';
 import AddProductMenu from './Dashboard/addProductMenu/AddProductMenu';
 import AllProductMenu from './Dashboard/allProductMenu/AllProductMenu';
+import AuthProvider from './provider/AuthProvider';
+import PrivateRoute from './routes/privateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -61,15 +63,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin-dashboard',
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
         path: 'addProduct',
-        element: <AddProductMenu/>
+        element: <AddProductMenu />
       },
       {
         path: 'allProduct',
-        element: <AllProductMenu/>
+        element: <AllProductMenu />
       }
     ]
   }
@@ -77,6 +79,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

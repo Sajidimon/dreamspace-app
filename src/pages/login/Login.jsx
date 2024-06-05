@@ -1,18 +1,49 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
 
     const [showpassword, setShowpassword] = useState(false);
+    const { logIn } = useContext(AuthContext)
+    const [passworderr, setPassworderr] = useState(null)
+    const navigate = useNavigate();
 
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        //reset password error;
+        setPassworderr(' ');
+
+        //login admin;
+
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                if (user) {
+                    navigate('/admin-dashboard')
+                }
+            }).catch(error => {
+                if (error?.code === 'auth/invalid-credential') {
+                    setPassworderr('Email & Password do not match !');
+                    return;
+                }
+            })
+
+
+    }
 
 
     return (
         <div className="my-20 mx-10">
             <div className="md:w-1/3 mx-auto">
                 <div className="card border border-gray-200 rounded">
-                    <form className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-black">Email Address</span>
@@ -33,7 +64,7 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
-                        {/* {passworderr && <span className="text-red-500">{passworderr}</span>} */}
+                        {passworderr && <span className="text-red-500">{passworderr}</span>}
                     </form>
                 </div>
                 <p className="mt-5">
