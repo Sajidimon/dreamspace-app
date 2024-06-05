@@ -15,6 +15,7 @@ import Cart from './pages/cart/Cart';
 import Checkout from './pages/checkout/Checkout';
 import Shop from './pages/shop/Shop';
 import ProductCategory from './pages/productCategory/ProductCategory';
+import Dashboard from './Dashboard/dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,15 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/admin-dashboard',
+    element: <Dashboard />,
+    children: [
+      {
+        
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
