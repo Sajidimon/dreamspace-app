@@ -1,15 +1,20 @@
-import Editor from "../../components/editor/Editor";
 import { useContext, useState } from "react";
+import Editor from "../../components/editor/Editor";
 import { AuthContext } from "../../provider/AuthProvider";
-import { saveProducts } from "../../api/products";
+import { useLoaderData } from "react-router-dom";
+import { updateProduct } from "../../api/products";
 
 
+const UpdateProduct = () => {
 
-const AddProductMenu = () => {
 
     const { user } = useContext(AuthContext)
 
-    const [editorContent, setEditorContent] = useState("");
+    const singleProduct = useLoaderData();
+
+    const { productImgUrl, title, price, shortdescription, category, description, _id } = singleProduct;
+
+    const [editorContent, setEditorContent] = useState(description);
 
     const handleEditorChange = (content) => {
         setEditorContent(content);
@@ -19,7 +24,7 @@ const AddProductMenu = () => {
         return html.replace(/<\/?[^>]+(>|$)/g, "");
     };
 
-    const handleProducts = event => {
+    const handleUpdateProducts = event => {
         event.preventDefault();
         const form = event.target;
         const title = form.title.value;
@@ -28,6 +33,7 @@ const AddProductMenu = () => {
         const shortdescription = form.shortdescription.value;
         const category = form.category.value;
         const email = user.email;
+        const productId = _id
 
         //image upload & save data to db;
 
@@ -44,13 +50,13 @@ const AddProductMenu = () => {
             .then(imageData => {
                 const productImgUrl = imageData.data.display_url;
 
-                const productInfo = { email, title, description, price, shortdescription, category, productImgUrl };
+                const productInfo = { email, productId, title, description, price, shortdescription, category, productImgUrl };
                 console.log(productInfo);
 
                 //save product to db;
 
-                saveProducts(productInfo)
-                
+                updateProduct(productInfo)
+
                 // Reset the editor content
                 setEditorContent("");
                 // Optionally reset the other form fields
@@ -67,7 +73,7 @@ const AddProductMenu = () => {
             </div>
             <div className="border mb-3 mt-3">
                 <div className="card">
-                    <form onSubmit={handleProducts} className="p-3">
+                    <form onSubmit={handleUpdateProducts} className="p-3">
                         <div className='md:grid md:grid-cols-4 gap-3'>
                             <div className='col-span-3'>
                                 <div>
@@ -75,7 +81,7 @@ const AddProductMenu = () => {
                                         <label className="label">
                                             <span className="label-text text-black text-xl">Add New Product</span>
                                         </label>
-                                        <input type="text" name="title" placeholder='Enter title' className="input input-bordered bg-white text-black" required />
+                                        <input type="text" defaultValue={title} name="title" placeholder='Enter title' className="input input-bordered bg-white text-black" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
@@ -87,13 +93,13 @@ const AddProductMenu = () => {
                                         <label className="label">
                                             <span className="label-text text-black text-xl">Product Price</span>
                                         </label>
-                                        <input type="number" min='1' name="price" placeholder='price' className="input input-bordered bg-white text-black" required />
+                                        <input type="number" min='1' name="price" defaultValue={price} placeholder='price' className="input input-bordered bg-white text-black" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-black text-xl">Product Short description</span>
                                         </label>
-                                        <input type="text" name="shortdescription" className="input input-lg input-bordered bg-white text-black" required />
+                                        <input type="text" name="shortdescription" defaultValue={shortdescription} className="input input-lg input-bordered bg-white text-black" required />
                                     </div>
                                 </div>
                             </div>
@@ -102,19 +108,20 @@ const AddProductMenu = () => {
                                     <label className="label">
                                         <span className="label-text text-black text-xl">Add Category</span>
                                     </label>
-                                    <input type="text" name="category" placeholder='Enter category' className="input input-bordered bg-white text-black" required />
+                                    <input type="text" name="category" defaultValue={category} placeholder='Enter category' className="input input-bordered bg-white text-black" required />
                                 </div>
-                                <div className="form-control mt-6 bg-white p-5 border">
-                                    <label className="label">
-                                        <span className="label-text text-black text-xl">Product Image</span>
+                                <div className="form-control">
+                                    <label htmlFor="fileInput" className="label">
+                                        <span className="label-text bg-blue-500 text-white py-3 px-5 rounded">Update image</span>
                                     </label>
-                                    <input type="file" name="image" className="file-input bg-white file-input-bordered file-input-info file-input-sm" required />
+                                    <input type="file" name='image' id="fileInput" className="file-input file-input-bordered hidden file-input-accent bg-white" />
+                                    <img src={productImgUrl} alt="" className="w-full h-32" />
                                 </div>
                                 <div className="form-control my-6 bg-white p-5 border">
                                     <label className="label">
-                                        <span className="label-text text-black text-xl">Click to Publish Product</span>
+                                        <span className="label-text text-black text-xl">Click to update Product</span>
                                     </label>
-                                    <button className="btn btn-info">Publish</button>
+                                    <button className="btn btn-info">Update</button>
                                 </div>
                             </div>
                         </div>
@@ -125,4 +132,4 @@ const AddProductMenu = () => {
     );
 };
 
-export default AddProductMenu;
+export default UpdateProduct;

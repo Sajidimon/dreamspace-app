@@ -21,6 +21,7 @@ import AllProductMenu from './Dashboard/allProductMenu/AllProductMenu';
 import AuthProvider from './provider/AuthProvider';
 import PrivateRoute from './routes/privateRoute/PrivateRoute';
 import AllOrderMenu from './Dashboard/allOrderMenu/AllOrderMenu';
+import UpdateProduct from './Dashboard/updateProduct/UpdateProduct';
 
 const router = createBrowserRouter([
   {
@@ -45,12 +46,14 @@ const router = createBrowserRouter([
         element: <Shop />
       },
       {
-        path: '/product-category',
-        element: <ProductCategory />
+        path: '/products/category/:category',
+        element: <ProductCategory />,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/products/category/${params.category}`)
       },
       {
-        path: '/single-product',
-        element: <SingleProduct />
+        path: '/products/item/:id',
+        element: <SingleProduct />,
+        loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/products/item/${params.id}`)
       },
       {
         path: '/cart',
@@ -64,12 +67,16 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin-dashboard',
-    element: <Dashboard />,
-    // element: <PrivateRoute><Dashboard /></PrivateRoute>,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
         path: 'addProduct',
         element: <AddProductMenu />
+      },
+      {
+        path: 'update-product/:id',
+        element: <UpdateProduct />,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/products/item/${params.id}`)
       },
       {
         path: 'allProduct',

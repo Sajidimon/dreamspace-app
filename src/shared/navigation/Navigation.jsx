@@ -2,16 +2,45 @@
 import { FaCartPlus } from "react-icons/fa";
 import { BiLogIn } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 
 const Navigation = () => {
 
+    const { user } = useContext(AuthContext);
+    const [products, setProducts] = useState(null);
+
+    //show all products;
+
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`${import.meta.env.VITE_API_URL}/products?email=${user?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setProducts(data)
+                })
+        }
+    }, [user?.email])
+
+
     const navlink = 
         <>
         
-            <Link to='/product-category'><li><a>Table Lamp</a></li></Link>
-            <Link to='/single-product'> <li><a>single product</a></li></Link>
+            {
+                Array.isArray(products) && <>
+                
+                    {
+                        products.slice(0, 2).map(product => <li key={product._id}>
+                            <Link to={`/products/category/${product.category}`}><a>{product.category}</a></Link>
+
+                        </li>)
+                    }
+                
+                </>
+            }
+            
             <Link to='/shop'> <li><a>Shop</a></li></Link>
            
         
