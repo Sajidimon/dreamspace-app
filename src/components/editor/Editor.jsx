@@ -1,15 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-
 import JoditEditor from 'jodit-react';
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 
-const Editor = ({ placeholder }) => {
-
+const Editor = ({ value, onChange, placeholder }) => {
     const editor = useRef(null);
-    const [content, setContent] = useState('');
-
 
     const config = useMemo(() => ({
         readonly: false,
@@ -20,18 +16,16 @@ const Editor = ({ placeholder }) => {
             font: '16px Arial',
             color: 'black',
         }
-    }),
-        [placeholder]
-    );
+    }), [placeholder]);
 
     return (
         <JoditEditor
             ref={editor}
-            value={content}
+            value={value}
             config={config}
             tabIndex={1} // tabIndex of textarea
-            onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-            onChange={newContent => { }}
+            onBlur={newContent => onChange(newContent)} // preferred to use only this option to update the content for performance reasons
+            onChange={() => { }} // Empty to avoid unnecessary updates
         />
     );
 };

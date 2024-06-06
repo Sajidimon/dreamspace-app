@@ -2,6 +2,7 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { saveUser } from '../../api/users';
 
 
 const Register = () => {
@@ -39,7 +40,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                saveUser(user)
                 navigate('/admin-dashboard')
             }).catch(error => {
                 if (error?.code === 'auth/email-already-in-use')

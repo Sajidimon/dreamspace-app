@@ -1,4 +1,4 @@
-import { FaExternalLinkAlt, FaHome, FaProductHunt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaFirstOrder, FaHome, FaProductHunt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
@@ -22,6 +22,19 @@ const DashboardMenu = () => {
                             </li>
                             <li>
                                 <Link to='/admin-dashboard/addProduct'> <button>Add product</button></Link>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary><FaFirstOrder />Orders</summary>
+                        <ul>
+                            <li>
+                                <Link to='/admin-dashboard/allOrder'> <button>All order</button></Link>
+                            </li>
+                            <li>
+                                <Link to='/admin-dashboard/addProduct'> <button>Add order</button></Link>
                             </li>
                         </ul>
                     </details>

@@ -20,6 +20,7 @@ import AddProductMenu from './Dashboard/addProductMenu/AddProductMenu';
 import AllProductMenu from './Dashboard/allProductMenu/AllProductMenu';
 import AuthProvider from './provider/AuthProvider';
 import PrivateRoute from './routes/privateRoute/PrivateRoute';
+import AllOrderMenu from './Dashboard/allOrderMenu/AllOrderMenu';
 
 const router = createBrowserRouter([
   {
@@ -63,7 +64,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin-dashboard',
-    element: <PrivateRoute><Dashboard /></PrivateRoute>,
+    element: <Dashboard />,
+    // element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
         path: 'addProduct',
@@ -72,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: 'allProduct',
         element: <AllProductMenu />
+      },
+      {
+        path: 'allOrder',
+        element: <AllOrderMenu/>
       }
     ]
   }
