@@ -22,6 +22,7 @@ import AuthProvider from './provider/AuthProvider';
 import PrivateRoute from './routes/privateRoute/PrivateRoute';
 import AllOrderMenu from './Dashboard/allOrderMenu/AllOrderMenu';
 import UpdateProduct from './Dashboard/updateProduct/UpdateProduct';
+import MakeAdmin from './components/makeAdmin/MakeAdmin';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: 'allOrder',
         element: <AllOrderMenu/>
+      },
+      {
+        path: 'make-admin',
+        element: <MakeAdmin/>
       }
     ]
   }

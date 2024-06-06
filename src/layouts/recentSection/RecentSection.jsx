@@ -1,31 +1,28 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
+import { useEffect, useState } from "react";
 import HomeProductCard from "../../components/homeProductCard/HomeProductCard";
 import { Link } from "react-router-dom";
 
 
 const RecentSection = () => {
 
-    const { user } = useContext(AuthContext);
     const [products, setProducts] = useState(null);
     console.log(products);
 
     //show all products;
 
     useEffect(() => {
-        if (user?.email) {
-            fetch(`${import.meta.env.VITE_API_URL}/products?email=${user?.email}`)
+            fetch(`${import.meta.env.VITE_API_URL}/products`)
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data)
                 })
-        }
-    }, [user?.email])
+        
+    }, [])
 
     return (
         <>
             {
-                Array.isArray(products) && <>
+                Array.isArray(products) && products.length > 0 ? <>
                 
                     <div className="my-14 mx-5">
                         <h2 className="text-center text-2xl text-black font-bold mb-10">Recent Arrival</h2>
@@ -40,7 +37,7 @@ const RecentSection = () => {
                         </div>
                     </div>
                 
-                </>
+                </> : <p className="text-black my-20 font-bold text-center">No Product found. Please add product.</p>
             }
         </>
     );

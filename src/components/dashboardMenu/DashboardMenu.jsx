@@ -1,4 +1,4 @@
-import { FaExternalLinkAlt, FaFirstOrder, FaHome, FaProductHunt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaFirstOrder, FaHome, FaProductHunt, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
@@ -35,6 +35,9 @@ const DashboardMenu = () => {
                             </li>
                         </ul>
                     </details>
+                </li>
+                <li>
+                    <Link to='/admin-dashboard/make-admin'><FaUser /><button className="text-left">Make admin</button></Link>
                 </li>
             </ul>
         </>

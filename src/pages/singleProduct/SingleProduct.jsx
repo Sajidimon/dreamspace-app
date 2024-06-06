@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const SingleProduct = () => {
 
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -61,6 +61,10 @@ const SingleProduct = () => {
                 }
             });
         }
+    }
+
+    if (loading) {
+        return <span className="loading mx-auto block my-52 loading-dots loading-lg"></span>;
     }
 
 

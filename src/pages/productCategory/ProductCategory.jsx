@@ -1,12 +1,18 @@
 import { useLoaderData } from "react-router-dom";
 import CategoryProductCard from "../../components/categoryProductCard/CategoryProductCard";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const ProductCategory = () => {
 
+    const { loading } = useContext(AuthContext)
     const categories = useLoaderData();
 
-    console.log(categories);
+
+    if (loading) {
+        return <span className="loading mx-auto block my-52 loading-dots loading-lg"></span>;
+    }
 
     return (
         <>

@@ -29,7 +29,7 @@ const Cart = () => {
     const subtotal = calculateSubtotal();
 
     if (loading) {
-        return <span className="loading mx-auto block mt-32 loading-dots loading-lg"></span>;
+        return <span className="loading mx-auto block my-32 loading-dots loading-lg"></span>;
     }
 
     return (
