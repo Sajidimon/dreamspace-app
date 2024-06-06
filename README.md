@@ -1,8 +1,10 @@
 # DreamSpace - home decor website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dreamspace is a home decor website build with react & express js.
 
-Currently, two official plugins are available:
+In Frontend, i use React js, Tailwind CSS framework, Daisy UI. On the other hand, In Backend, I use Node & Express Js. Also i use Firebase Authentication for users login & Registration system.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Live Link
+
+DreamSpace app link: https://dreamspace-site.web.app
+DreamSpace admin Login: Email: skillgori@gmail.com & password: Skillgori1234
