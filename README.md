@@ -28,6 +28,8 @@ Password: Skillgori1234
 
 # App Installation;
 
+## First, Clone this client site repository to your local computer
+
 ```shell
     $ npm install
 ```
@@ -35,5 +37,9 @@ Password: Skillgori1234
 ```shell
     $ npm start
 ```
+
+## Now Clone this server site reposity to your local computer;
+
+DreamSpace server github link: https://github.com/Sajidimon/dreamspace-server
 
 
