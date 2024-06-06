@@ -23,7 +23,6 @@ const SingleProduct = () => {
                         { shortdescription}
                 </p>
                 <div className="flex gap-3 my-3">
-                    <button className="btn btn-primary rounded-md btn-sm">Buy now</button>
                     <button className="btn btn-primary rounded-md btn-sm">Add to cart</button>
                 </div>
             </div>

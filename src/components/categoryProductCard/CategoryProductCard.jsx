@@ -1,15 +1,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 
 const CategoryProductCard = ({ categories }) => {
     
-    const { productImgUrl, title, price } = categories;
+    const { productImgUrl, title, price, _id } = categories;
 
     return (
         <>
             <div className="rounded-lg mb-10">
-                <figure><img src={ productImgUrl} alt="product" /></figure>
+                <Link to={`/products/item/${_id}`}>
+                    <figure><img src={productImgUrl} alt="product" /></figure>
+                </Link>
                 <div className="m-3 text-center text-black text-base">
                     <h2>{ title}</h2>
                     <p className="my-3">Price: <span className="text-red-500 font-bold">{ price}tk</span></p>
