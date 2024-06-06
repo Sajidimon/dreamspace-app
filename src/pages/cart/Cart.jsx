@@ -9,7 +9,7 @@ const Cart = () => {
     const [carts, setCarts] = useState([]);
 
 
-    //show all products;
+    //show all cart item;
 
     useEffect(() => {
         if (user?.email) {
@@ -66,7 +66,7 @@ const Cart = () => {
                         </div>
                     </div>
                 
-                </> : <p>No item found in Your cart.</p>
+                </> : <p className="my-16 text-black font-bold text-center">No item found in Your cart.</p>
             }
         
         

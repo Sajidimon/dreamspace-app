@@ -33,9 +33,6 @@ const DashboardMenu = () => {
                             <li>
                                 <Link to='/admin-dashboard/allOrder'> <button>All order</button></Link>
                             </li>
-                            <li>
-                                <Link to='/admin-dashboard/addProduct'> <button>Add order</button></Link>
-                            </li>
                         </ul>
                     </details>
                 </li>

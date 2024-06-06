@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
+
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { deleteCart } from "../../api/carts";
 
 const CartCollection = ({ cart, carts, setCarts }) => {
     
     const { title, productImgUrl, price, _id } = cart;
-
-
 
     //delete single product via id;
 

@@ -1,59 +1,69 @@
-import { FaEdit, FaTrash } from "react-icons/fa";
-import { IoIosEye } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import OrderCard from "../../components/orderCard/OrderCard";
 
 
 
 const AllOrderMenu = () => {
+
+    const { user, loading } = useContext(AuthContext);
+    const [orders, setOrders] = useState([]);
+
+    //show all products;
+
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`${import.meta.env.VITE_API_URL}/orders?email=${user?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setOrders(data)
+                })
+        }
+    }, [user?.email])
+
+
+    if (loading) {
+        return <span className="loading mx-auto block mt-52 loading-dots loading-lg"></span>;
+    }
+
     return (
-        <div className="m-5">
-            <div className="flex gap-4 mb-5">
-                <h2 className="text-black text-2xl font-bold">Orders</h2>
-            </div>
-            <div className="overflow-x-auto border p-3 text-black">
-                <table className="table table-zebra">
-                    {/* head */}
-                    <thead className="text-black text-base">
-                        <tr>
-                            <th>Sr</th>
-                            <th>Product</th>
-                            <th>Customer Name</th>
-                            <th>date</th>
-                            <th>price</th>
-                            <th>action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="product" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span className="text-base">Hart Hagerty</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span className="text-base">Hart Hagerty</span>
-                            </td>
-                            <td className="text-base">19/3/2023</td>
-                            <td className="text-base">2,900</td>
-                            <td className="flex gap-2">
-                                <Link to=''> <button className="p-2 rounded bg-blue-500 text-white border-none"> <IoIosEye /> </button></Link>
-                                <Link to=''> <button className="p-2 rounded bg-green-500 text-white border-none"><FaEdit /> </button></Link>
-                                <button className="p-2 rounded bg-red-500 text-white border-none"><FaTrash /></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <>
+        
+            {
+                Array.isArray(orders) && orders.length > 0 ? <>
+                
+                    <div className="m-5">
+                        <div className="flex gap-4 mb-5">
+                            <h2 className="text-black text-2xl font-bold">Total Orders: {orders.length}</h2>
+                        </div>
+                        <div className="overflow-x-auto border p-3 text-black">
+                            <table className="table">
+                                <thead className="text-black text-base">
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Customer Name</th>
+                                        <th>Number</th>
+                                        <th>Address</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {
+                                        orders.map(order => <OrderCard key={order._id} order={ order} orders={orders} setOrders={setOrders} />)
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+                </> : <p className="my-16 text-black font-bold text-center">No item found in Your order.</p>
+        }
+        
+        </>
     );
 };
 
