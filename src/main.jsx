@@ -22,7 +22,7 @@ import AuthProvider from './provider/AuthProvider';
 import PrivateRoute from './routes/privateRoute/PrivateRoute';
 import AllOrderMenu from './Dashboard/allOrderMenu/AllOrderMenu';
 import UpdateProduct from './Dashboard/updateProduct/UpdateProduct';
-import MakeAdmin from './components/makeAdmin/MakeAdmin';
+import AllUserMenu from './Dashboard/allUserMenu/AllUserMenu';
 
 const router = createBrowserRouter([
   {
@@ -88,8 +88,9 @@ const router = createBrowserRouter([
         element: <AllOrderMenu/>
       },
       {
-        path: 'make-admin',
-        element: <MakeAdmin/>
+        path: 'allUser',
+        element: <AllUserMenu />,
+        loader: () => fetch('http://localhost:5000/users')
       }
     ]
   }

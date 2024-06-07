@@ -31,9 +31,8 @@ const Navigation = () => {
                 Array.isArray(products) && <>
 
                     {
-                        products.slice(0, 2).map(product => <li key={product._id}>
+                        products.slice(4, 6).map(product => <li key={product._id}>
                             <Link to={`/products/category/${product.category}`}><a>{product.category}</a></Link>
-
                         </li>)
                     }
 

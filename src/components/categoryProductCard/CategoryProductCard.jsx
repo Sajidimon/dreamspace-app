@@ -64,16 +64,26 @@ const CategoryProductCard = ({ categories }) => {
 
     return (
         <>
-            <div className="rounded-lg mb-10">
-                <Link to={`/products/item/${_id}`}>
-                    <figure><img src={productImgUrl} alt="product" /></figure>
-                </Link>
-                <div className="m-3 text-center text-black text-base">
-                    <h2>{ title}</h2>
-                    <p className="my-3">Price: <span className="text-red-500 font-bold">{ price}tk</span></p>
-                    <button onClick={()=>handleAddToCart(_id)} className="btn btn-info btn-sm">add to cart</button>
-                </div>
-            </div> 
+            {
+                Array.isArray(categories) && categories.length > 0 ? <>
+                
+                    {
+                        categories.map(category => <div key={category._id} className="rounded-lg mb-10">
+                            <Link to={`/products/item/${_id}`}>
+                                <figure><img src={category.productImgUrl} alt="product" /></figure>
+                            </Link>
+                            <div className="m-3 text-center text-black text-base">
+                                <h2>{category.title}</h2>
+                                <p className="my-3">Price: <span className="text-red-500 font-bold">{category.price}tk</span></p>
+                                <button onClick={() => handleAddToCart(_id)} className="btn btn-info btn-sm">add to cart</button>
+                            </div>
+                        </div>)
+                }
+                
+                
+                </> : <p>No product found in this category</p>
+            }
+            
         </>
     );
 };

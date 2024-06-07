@@ -1,11 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ShopProductCard from "../../components/shopProductCard/ShopProductCard";
-import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Shop = () => {
 
-    const { loading } = useContext(AuthContext)
     const [products, setProducts] = useState(null);
     console.log(products);
 
@@ -18,10 +16,6 @@ const Shop = () => {
                     setProducts(data)
                 })
     }, [])
-
-    if (loading) {
-        return <span className="loading mx-auto block my-52 loading-dots loading-lg"></span>;
-    }
 
     return (
         <>

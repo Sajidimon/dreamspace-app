@@ -2,13 +2,15 @@
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import app from "../firebase/firebase.init";
+import { getRole } from "../api/users";
 
 
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState(null)
+    const [role, setRole] = useState(null)
     const [loading, setLoading] = useState(true)
 
     //create user with email and password;
@@ -30,6 +32,16 @@ const AuthProvider = ({ children }) => {
             return unSubscribe();
         }
     }, [])
+
+
+    // get current user role;
+
+    useEffect(() => {
+        if (user) {
+            getRole(user.email).then(data => setRole(data))
+        }
+    }, [user])
+
 
     //login user with email and password;
 
@@ -54,6 +66,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         logIn,
         logout,
+        role
 
     }
 
