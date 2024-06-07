@@ -8,12 +8,12 @@ const CategorySection = () => {
     //show all products;
 
     useEffect(() => {
-            fetch(`${import.meta.env.VITE_API_URL}/products`)
-                .then(res => res.json())
-                .then(data => {
-                    setProducts(data)
-                })
-       
+        fetch(`${import.meta.env.VITE_API_URL}/products`)
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data)
+            })
+
     }, [])
 
     return (
@@ -35,7 +35,25 @@ const CategorySection = () => {
 
                         </div>
                     </div>
-                </> : <p className="text-black mt-20 font-bold text-center">No Category found.</p>
+                </> :
+                    <div>
+                        <p className="text-black mt-20 mb-10 font-bold text-center">Loading Category.</p>
+                        <div className="md:grid md:grid-cols-4 gap-4">
+                            <div className="flex flex-col gap-4 m-5">
+                                <div className="skeleton h-32 w-full bg-[#E5E6E6]"></div>
+                                <div className="skeleton h-4 w-28 bg-[#E5E6E6]"></div>
+                                <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                                <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                            </div>
+                            <div className="flex flex-col gap-4 m-5">
+                                <div className="skeleton h-32 w-full bg-[#E5E6E6]"></div>
+                                <div className="skeleton h-4 w-28 bg-[#E5E6E6]"></div>
+                                <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                                <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                            </div>
+                        </div>
+                    </div>
+
             }
 
         </>

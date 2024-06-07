@@ -18,7 +18,7 @@ const LogoutButton = () => {
     return (
         <>
             <div>
-                <Link to='/admin-login'><button onClick={handleSignout} className='w-full py-2 bg-red-600 hover:bg-red-700 rounded'> Logout</button></Link>
+                <Link to='/admin-login'><button onClick={handleSignout} className='w-full p-2 bg-red-600 hover:bg-red-700 rounded'> Logout</button></Link>
             </div>
         </>
     );

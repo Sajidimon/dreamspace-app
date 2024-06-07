@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 const RecentSection = () => {
 
-    const [products, setProducts] = useState(null);
-    console.log(products);
+    const [products, setProducts] = useState([]);
 
     //show all products;
 
@@ -37,7 +36,20 @@ const RecentSection = () => {
                         </div>
                     </div>
                 
-                </> : <p className="text-black my-20 font-bold text-center">No Product found. Please add product.</p>
+                </> : <div className="md:grid md:grid-cols-4 gap-4">
+                        <div className="flex flex-col gap-4 m-5">
+                            <div className="skeleton h-32 w-full bg-[#E5E6E6]"></div>
+                            <div className="skeleton h-4 w-28 bg-[#E5E6E6]"></div>
+                            <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                            <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                        </div>
+                        <div className="flex flex-col gap-4 m-5">
+                            <div className="skeleton h-32 w-full bg-[#E5E6E6]"></div>
+                            <div className="skeleton h-4 w-28 bg-[#E5E6E6]"></div>
+                            <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                            <div className="skeleton h-4 w-full bg-[#E5E6E6]"></div>
+                        </div>
+                </div>
             }
         </>
     );
